@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import axios from "axios";
 
 function App() {
   return (
@@ -17,14 +18,24 @@ function RenderMultipleThings() {
   const [value, setValue] = useState("");
   const [items, setItems] = useState([]);
 
-  const addNewItemToItems = () => {
+  const addNewItemToItems = async () => {
+    await axios.post("http://localhost:3000", { value });
     setItems([...items, value]);
-    setValue("");
   };
 
   const handleChange = (e) => {
-    console.log(e.target.value);
     setValue(e.target.value);
+  };
+
+  const loadItemsToItems = async () => {
+    const response = await axios.get("http://localhost:3000", {
+      params: {
+        value: "",
+      },
+    });
+
+    setValue(response.data);
+    console.log(response.value);
   };
 
   return (
@@ -35,6 +46,7 @@ function RenderMultipleThings() {
           <input type="text" value={value} onChange={handleChange} />
         </label>
         <button onClick={addNewItemToItems}>Create New Thing</button>
+        <button onClick={loadItemsToItems}>Load Things</button>
       </div>
       {items.map((item, index) => (
         <div key={index}>{item}</div>
