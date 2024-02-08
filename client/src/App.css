@@ -1,4 +1,5 @@
 #root {
+  gap: 20px;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -34,9 +35,52 @@
 }
 
 .card {
-  padding: 2em;
+  padding: 1em;
 }
 
 .read-the-docs {
   color: #888;
+}
+
+.todotext {
+  padding: 1rem;
+}
+
+.bubbleGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 5px;
+
+  button {
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    transform: scale(0.7);
+  }
+}
+
+.bubble {
+  display: flex;
+  gap: 10px;
+  max-width: 200px;
+  border: 2px solid red;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.finished {
+  display: flex;
+  gap: 10px;
+  max-width: 200px;
+  border: 2px solid green;
+  border-radius: 5px;
+  padding: 10px;
 }
